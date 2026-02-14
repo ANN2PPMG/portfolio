@@ -2,6 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
 const entries = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.order - b.data.order);
 ---
 <Layout title="3 ПКС Проект | Атанас Николов" description="Глави от разработката за 3 ПКС – автоматизирано оценяване и дигитална трансформация.">
@@ -13,7 +16,7 @@ const entries = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.orde
     </div>
     <div class="space-y-4">
       {entries.map((entry) => (
-        <a href={`/3-pks-proekt/${entry.slug}`} class="block rounded-xl border border-white/10 bg-panel/70 p-5 shadow-glow transition hover:border-accent">
+        <a href={withBase(`/3-pks-proekt/${entry.slug}/`)} class="block rounded-xl border border-white/10 bg-panel/70 p-5 shadow-glow transition hover:border-accent">
           <div class="flex items-center justify-between gap-3">
             <div>
               <div class="text-xs text-ink/60">Глава {entry.data.order}</div>

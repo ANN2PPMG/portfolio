@@ -1,6 +1,6 @@
----
-const isHome = Astro.url.pathname === '/';
-const to = (id: string) => (isHome ? `#${id}` : `/#${id}`);
+const base = import.meta.env.BASE_URL;
+const to = (id: string) => `${base}#${id}`;
+const home = base;
 import ThemeToggle from './ThemeToggle';
 ---
 
@@ -16,7 +16,7 @@ import ThemeToggle from './ThemeToggle';
       </div>
     </div>
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a href={to('hero')} class="hover:text-accent">Начало</a>
+      <a href={home} class="hover:text-accent">Начало</a>
       <a href={to('about')} class="hover:text-accent">За мен</a>
       <a href={to('methods')} class="hover:text-accent">Методи</a>
       <a href={to('achievements')} class="hover:text-accent">Постижения</a>

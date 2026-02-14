@@ -7,6 +7,8 @@ import CodeRunnerDemo from '../components/CodeRunnerDemo';
 import { getCollection } from 'astro:content';
 
 const chapters = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.order - b.data.order);
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 <Layout>
   <section id="hero" class="grid gap-10 md:grid-cols-2 items-center">
@@ -18,8 +20,8 @@ const chapters = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.ord
         интерактивни ресурси, за да превръщам алгоритмите в практическо умение.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="/3-pks-proekt" class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-surface font-semibold shadow-glow">Виж 3 ПКС разработката</a>
-        <a href="#methods" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm hover:border-accent">Методи в действие</a>
+        <a href={withBase('/3-pks-proekt/')} class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-surface font-semibold shadow-glow">Виж 3 ПКС разработката</a>
+        <a href={`${base}#methods`} class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm hover:border-accent">Методи в действие</a>
       </div>
       <div class="flex gap-6 text-sm text-ink/70">
         <div>
@@ -72,7 +74,7 @@ const chapters = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.ord
         <p class="text-xs uppercase tracking-[0.18em] text-ink/60">Моите методи</p>
         <h2 class="text-3xl font-semibold">Интерактивни карти</h2>
       </div>
-      <a href="#pks" class="text-sm text-accent hover:text-ink">Към 3 ПКС разработката →</a>
+      <a href={`${base}#pks`} class="text-sm text-accent hover:text-ink">Към 3 ПКС разработката →</a>
     </div>
     <MethodCards client:visible />
   </section>
@@ -91,11 +93,11 @@ const chapters = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.ord
         <p class="text-xs uppercase tracking-[0.18em] text-ink/60">3 ПКС Разработка</p>
         <h2 class="text-3xl font-semibold">Глави на реферата</h2>
       </div>
-      <a href="/3-pks-proekt" class="text-sm text-accent hover:text-ink">Всички материали →</a>
+      <a href={withBase('/3-pks-proekt/')} class="text-sm text-accent hover:text-ink">Всички материали →</a>
     </div>
     <div class="grid gap-4 md:grid-cols-3">
       {chapters.map((chapter) => (
-        <a href={`/3-pks-proekt/${chapter.slug}`} class="rounded-xl border border-white/10 bg-panel/70 p-4 shadow-glow transition hover:border-accent">
+        <a href={withBase(`/3-pks-proekt/${chapter.slug}/`)} class="rounded-xl border border-white/10 bg-panel/70 p-4 shadow-glow transition hover:border-accent">
           <div class="text-xs text-ink/60">Глава {chapter.data.order}</div>
           <h3 class="text-xl font-semibold mt-1">{chapter.data.title}</h3>
           <p class="mt-2 text-sm text-ink/80 leading-6">{chapter.data.summary}</p>
