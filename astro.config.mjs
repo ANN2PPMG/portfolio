@@ -8,4 +8,8 @@ export default defineConfig({
   integrations: [react(), tailwind({ config: './tailwind.config.mjs' }), mdx()],
   site: 'https://ann2ppmg.github.io', // Твоето име в GitHub
   base: '/portfolio', // Името на проекта (repo-то) в GitHub
+  build: {
+    assets: 'assets' // Това премахва долната черта и решава проблема генерално
+  },
+  trailingSlash: 'always'
 });
