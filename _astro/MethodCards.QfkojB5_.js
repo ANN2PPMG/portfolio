@@ -1,0 +1,16 @@
+import{j as e}from"./jsx-runtime.ClP7wGfN.js";import{c as a}from"./createLucideIcon.Dkdu1INU.js";import"./index.DK-fsZOb.js";/**
+ * @license lucide-react v0.474.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const s=[["path",{d:"M12 21V7",key:"gj6g52"}],["path",{d:"m16 12 2 2 4-4",key:"mdajum"}],["path",{d:"M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3",key:"8arnkb"}]],r=a("BookOpenCheck",s);/**
+ * @license lucide-react v0.474.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const o=[["path",{d:"M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",key:"4pj2yx"}],["path",{d:"M20 3v4",key:"1olli1"}],["path",{d:"M22 5h-4",key:"1gvqau"}],["path",{d:"M4 17v2",key:"vumght"}],["path",{d:"M5 18H3",key:"zchphs"}]],c=a("Sparkles",o);/**
+ * @license lucide-react v0.474.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const l=[["path",{d:"m7 11 2-2-2-2",key:"1lz0vl"}],["path",{d:"M11 13h4",key:"1p7l4v"}],["rect",{width:"18",height:"18",x:"3",y:"3",rx:"2",ry:"2",key:"1m3agn"}]],d=a("SquareTerminal",l),p=[{title:"Moodle + Code Runner",description:"Автоматизирано оценяване на алгоритми и OOP задачи с C#, Python и Java. CI-подобни проверки в реално време.",tech:["Moodle","CodeRunner","Unit tests","CI pipeline"],icon:d},{title:"H5P интерактивности",description:"Микро-уроци за визуализация на алгоритми, динамични викторини и самооценка, интегрирани в LMS.",tech:["H5P","LTI","Accessibility-first","Learning analytics"],icon:c},{title:"Проектно-базирано учене",description:"“Учене чрез правене” с 4 години менторство – от идея, през прототип, до защита пред жури.",tech:["Agile rituals","Peer review","Demo days","Reflective docs"],icon:r}];function u(){return e.jsx("div",{className:"grid gap-6 md:grid-cols-3",children:p.map(t=>{const n=t.icon;return e.jsxs("article",{className:"group relative overflow-hidden rounded-2xl border border-white/10 bg-panel/70 p-5 shadow-glow transition duration-200 hover:-translate-y-1 hover:border-accent",children:[e.jsxs("div",{className:"flex items-center gap-3",children:[e.jsx("span",{className:"rounded-xl bg-accent/15 p-2 text-accent",children:e.jsx(n,{size:22})}),e.jsx("h3",{className:"text-lg font-semibold",children:t.title})]}),e.jsx("p",{className:"mt-3 text-sm text-ink/80 leading-6",children:t.description}),e.jsx("div",{className:"mt-4 flex flex-wrap gap-2 text-xs text-ink/70",children:t.tech.map(i=>e.jsx("span",{className:"rounded-full border border-white/10 bg-white/5 px-3 py-1",children:i},i))}),e.jsx("div",{className:"pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100",children:e.jsx("div",{className:"absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent/10 blur-3xl","aria-hidden":!0})})]},t.title)})})}export{u as default};
