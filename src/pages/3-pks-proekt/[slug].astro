@@ -1,0 +1,31 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('3-pks-proekt');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Layout title={`${entry.data.title} | 3 ПКС`} description={entry.data.summary}>
+  <section class="space-y-4">
+    <a href="/3-pks-proekt" class="text-sm text-accent hover:text-ink">← Обратно към съдържанието</a>
+    <div class="text-xs uppercase tracking-[0.18em] text-ink/60">Глава {entry.data.order}</div>
+    <h1 class="text-3xl font-semibold">{entry.data.title}</h1>
+    <p class="text-ink/80 leading-6 max-w-3xl">{entry.data.summary}</p>
+    <div class="flex flex-wrap gap-2 text-xs text-ink/70">
+      {entry.data.tags.map((tag: string) => (
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">{tag}</span>
+      ))}
+    </div>
+    <article class="prose prose-invert prose-slate max-w-none mt-6">
+      <Content />
+    </article>
+  </section>
+</Layout>

@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CodeTypewriter from '../components/CodeTypewriter';
+import MethodCards from '../components/MethodCards';
+import AchievementsTimeline from '../components/AchievementsTimeline';
+import CodeRunnerDemo from '../components/CodeRunnerDemo';
+import { getCollection } from 'astro:content';
+
+const chapters = (await getCollection('3-pks-proekt')).sort((a, b) => a.data.order - b.data.order);
+---
+<Layout>
+  <section id="hero" class="grid gap-10 md:grid-cols-2 items-center">
+    <div class="space-y-6">
+      <p class="text-xs uppercase tracking-[0.18em] text-ink/60">Дигитална трансформация в образованието</p>
+      <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Атанас Николов - Дигитална трансформация в образованието</h1>
+      <p class="text-ink/80 leading-7 max-w-2xl">
+        Преподавател по информатика в ППМГ Бургас. Комбинирам "учене чрез правене", автоматизирано оценяване и
+        интерактивни ресурси, за да превръщам алгоритмите в практическо умение.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/3-pks-proekt" class="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-surface font-semibold shadow-glow">Виж 3 ПКС разработката</a>
+        <a href="#methods" class="inline-flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2 text-sm hover:border-accent">Методи в действие</a>
+      </div>
+      <div class="flex gap-6 text-sm text-ink/70">
+        <div>
+          <div class="text-2xl font-semibold text-ink">4+</div>
+          <div>години менторство</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-ink">NOIT</div>
+          <div>II място</div>
+        </div>
+        <div>
+          <div class="text-2xl font-semibold text-ink">LMS</div>
+          <div>Moodle + H5P</div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-4">
+      <CodeTypewriter client:load />
+      <CodeRunnerDemo client:load />
+    </div>
+  </section>
+
+  <section id="about" class="grid gap-8 md:grid-cols-[1fr_0.6fr] items-start">
+    <div class="space-y-3">
+      <p class="text-xs uppercase tracking-[0.18em] text-ink/60">За мен & Философия</p>
+      <h2 class="text-3xl font-semibold">Учене чрез правене</h2>
+      <p class="text-ink/80 leading-7">
+        От 4 години водя ученици през реални проекти: от идея и диаграми, през код и тестове, до защита пред жури. В класната стая
+        съчетавам практическо програмиране, микро-итерации и постоянна обратна връзка. Средата е същата като в индустрията.
+      </p>
+      <p class="text-ink/80 leading-7">
+        Всеки урок е мини спринт с ясно очаквани резултати и демонстрация. Учениците виждат как кодът им минава тестове, какво не
+        работи и как да го поправят. Това изгражда самостоятелност и навик за качествен софтуер.
+      </p>
+    </div>
+    <div class="rounded-2xl border border-white/10 bg-panel/70 p-5 shadow-glow space-y-3">
+      <div class="text-xs uppercase tracking-[0.18em] text-ink/60">Моите принципи</div>
+      <ul class="space-y-2 text-ink/80 leading-6">
+        <li>• Проблемите са истински (данни, сензори, API-та), не учебни заготовки.</li>
+        <li>• Автоматизирана проверка = честна, бърза и мотивираща обратна връзка.</li>
+        <li>• Проектните роли се сменят: дев, QA, презентатор.</li>
+        <li>• Рефлексия след всеки спринт: какво научихме и как доказахме това.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="methods" class="space-y-4">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div>
+        <p class="text-xs uppercase tracking-[0.18em] text-ink/60">Моите методи</p>
+        <h2 class="text-3xl font-semibold">Интерактивни карти</h2>
+      </div>
+      <a href="#pks" class="text-sm text-accent hover:text-ink">Към 3 ПКС разработката →</a>
+    </div>
+    <MethodCards client:visible />
+  </section>
+
+  <section id="achievements" class="space-y-4">
+    <div>
+      <p class="text-xs uppercase tracking-[0.18em] text-ink/60">Постижения</p>
+      <h2 class="text-3xl font-semibold">Акценти и награди</h2>
+    </div>
+    <AchievementsTimeline client:visible />
+  </section>
+
+  <section id="pks" class="space-y-4">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div>
+        <p class="text-xs uppercase tracking-[0.18em] text-ink/60">3 ПКС Разработка</p>
+        <h2 class="text-3xl font-semibold">Глави на реферата</h2>
+      </div>
+      <a href="/3-pks-proekt" class="text-sm text-accent hover:text-ink">Всички материали →</a>
+    </div>
+    <div class="grid gap-4 md:grid-cols-3">
+      {chapters.map((chapter) => (
+        <a href={`/3-pks-proekt/${chapter.slug}`} class="rounded-xl border border-white/10 bg-panel/70 p-4 shadow-glow transition hover:border-accent">
+          <div class="text-xs text-ink/60">Глава {chapter.data.order}</div>
+          <h3 class="text-xl font-semibold mt-1">{chapter.data.title}</h3>
+          <p class="mt-2 text-sm text-ink/80 leading-6">{chapter.data.summary}</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-xs text-ink/70">
+            {chapter.data.tags.slice(0, 3).map((tag: string) => (
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1">{tag}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Layout>

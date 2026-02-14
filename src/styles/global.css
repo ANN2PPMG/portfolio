@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-surface: 11 18 32;
+  --color-panel: 17 25 43;
+  --color-ink: 226 232 240;
+  --color-accent: 88 211 255;
+  --color-accent-soft: 122 242 161;
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --color-surface: 244 247 251;
+  --color-panel: 255 255 255;
+  --color-ink: 15 23 42;
+  --color-accent: 54 125 255;
+  --color-accent-soft: 112 214 255;
+  color-scheme: light;
+}
+
+body {
+  @apply bg-surface text-ink font-sans antialiased min-h-screen;
+  background-image: radial-gradient(circle at 20% 20%, rgba(88, 211, 255, 0.08), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(122, 242, 161, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(11, 18, 32, 0.95), rgba(11, 18, 32, 1));
+}
+
+[data-theme='light'] body {
+  background-image: radial-gradient(circle at 20% 20%, rgba(54, 125, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 80% 0%, rgba(112, 214, 255, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(248, 251, 255, 0.95), rgba(244, 247, 251, 1));
+}
+
+a {
+  @apply text-ink transition-colors;
+}
+
+a:hover {
+  @apply text-accent;
+}
+
+.code-pane {
+  @apply bg-panel/80 border border-white/10 rounded-xl shadow-glow;
+}
